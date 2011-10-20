@@ -51,14 +51,12 @@ public class AlienClass1ReaderTest {
 public AlienClass1ReaderTest() throws AlienReaderException {
 
   AlienClass1Reader reader = new AlienClass1Reader();
-  reader.setConnection("COM1");
+//  reader.setConnection("COM1");
 
   // To connect to a networked reader instead, use the following:
-/*
-  reader.setConnection("10.1.60.107", 23);
+  reader.setConnection("150.164.7.73", 23);
   reader.setUsername("alien");
   reader.setPassword("password");
- */
 
   // Open a connection to the reader
   reader.open();

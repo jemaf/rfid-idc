@@ -1,0 +1,6 @@
+MŽtricas para coleta:
+	- tempo necess‡rio para ler todas as N etiquetas
+	- integridade dos dados das etiquetas (vieram todos os campos???)
+	- Angulo de leitura (% de etiquetas lida de acordo com o ‰ngulo)
+	- dist‰ncia de leitura (% de etiquetas lidas de acordo com a dist‰ncia)
+	
