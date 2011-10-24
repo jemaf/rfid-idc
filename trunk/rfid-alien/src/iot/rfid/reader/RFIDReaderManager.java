@@ -11,18 +11,33 @@ import com.alien.enterpriseRFID.reader.AlienReaderTimeoutException;
 import com.alien.enterpriseRFID.tags.Tag;
 
 /**
+ * Classe Manager para utilização de funções de leitura
  * @author lucasm
  * 
  */
 public class RFIDReaderManager {
-	public static final int PORT_DEFAULT = 23;
+	public static final int NETWORK_PORT_DEFAULT = 23;
 	public static final String USERNAME_DEFAULT = "alien";
 	public static final String PASSWORD_DEFAULT = "password";
+	public static final String SERIAL_PORT_DEFAULT = "COM1";
 
 	private AlienClass1Reader reader = null;
 
+	public AlienClass1Reader createReaderBySerialPort() {
+		return this.createReaderBySerialPort(SERIAL_PORT_DEFAULT);
+	}
+
+	public AlienClass1Reader createReaderBySerialPort(String port) {
+		AlienClass1Reader reader = new AlienClass1Reader();
+		reader.setSerialConnection(port);
+		
+		this.reader = reader;
+		
+		return reader;
+	}
+
 	public AlienClass1Reader createReaderByIp(String ip) {
-		return this.createReaderByIp(ip, RFIDReaderManager.PORT_DEFAULT,
+		return this.createReaderByIp(ip, RFIDReaderManager.NETWORK_PORT_DEFAULT,
 				RFIDReaderManager.USERNAME_DEFAULT,
 				RFIDReaderManager.PASSWORD_DEFAULT);
 	}
@@ -84,7 +99,7 @@ public class RFIDReaderManager {
 
 		return false;
 	}
-	
+
 	public boolean closeConnection() {
 		if (this.reader != null) {
 			if (this.reader.isOpen()) {
@@ -92,7 +107,7 @@ public class RFIDReaderManager {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 }
