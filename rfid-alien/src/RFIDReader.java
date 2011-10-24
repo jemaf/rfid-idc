@@ -6,6 +6,8 @@ public class RFIDReader {
 
 	private static final String ip = "150.164.7.73";
 	private static final int port = 23;
+	private static final String username = "alien";
+	private static final String password = "password";
 	private Tag[] tagList;
 
 	/**
@@ -17,6 +19,8 @@ public class RFIDReader {
 		// instancia o leitor
 		AlienClass1Reader reader = new AlienClass1Reader();
 		reader.setNetworkConnection(ip, port);
+		reader.setUsername(username);
+		reader.setPassword(password);
 
 		reader.open();
 		tagList = reader.getTagList();
