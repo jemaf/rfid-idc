@@ -25,7 +25,7 @@ public class TimeCountTagReader {
 		// return;
 		// }
 
-		Integer timeCount = 10;
+		Integer timeCount = 2;
 		if (timeCount == null || timeCount < 1) {
 			System.out.println("Tempo de leitura deve ser maior que zero");
 			return;
