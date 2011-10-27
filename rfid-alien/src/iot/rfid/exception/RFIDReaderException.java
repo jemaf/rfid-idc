@@ -14,5 +14,8 @@ public class RFIDReaderException extends RuntimeException {
 	public RFIDReaderException(String message) {
 		super(message);
 	}
+	public RFIDReaderException(String message, Exception exception) {
+		super(message, exception);
+	}
 
 }

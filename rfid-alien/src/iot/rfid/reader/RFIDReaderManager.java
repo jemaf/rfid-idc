@@ -3,6 +3,8 @@
  */
 package iot.rfid.reader;
 
+import iot.rfid.exception.RFIDReaderException;
+
 import com.alien.enterpriseRFID.reader.AlienClass1Reader;
 import com.alien.enterpriseRFID.reader.AlienReaderConnectionException;
 import com.alien.enterpriseRFID.reader.AlienReaderException;
@@ -11,7 +13,7 @@ import com.alien.enterpriseRFID.reader.AlienReaderTimeoutException;
 import com.alien.enterpriseRFID.tags.Tag;
 
 /**
- * Classe Manager para utilização de funções de leitura
+ * Classe Manager para utilizaï¿½ï¿½o de funï¿½ï¿½es de leitura
  * @author lucasm
  * 
  */
@@ -30,9 +32,9 @@ public class RFIDReaderManager {
 	public AlienClass1Reader createReaderBySerialPort(String port) {
 		AlienClass1Reader reader = new AlienClass1Reader();
 		reader.setSerialConnection(port);
+//		reader.setTagType(AlienClass1Reader.CLASS1GEN2);
 		
 		this.reader = reader;
-		
 		return reader;
 	}
 
@@ -108,6 +110,32 @@ public class RFIDReaderManager {
 			}
 		}
 
+		return false;
+	}
+
+	public boolean writeEPCData(String data) {
+		if (this.reader != null) {
+			try {
+				this.reader.programEPC(data);
+				return true;
+			} catch (AlienReaderException e) {
+				throw new RFIDReaderException("Erro ao gravar EPC nas tags.", e);
+			}
+		}
+		
+		return false;
+	}
+	
+	public boolean writeUserData(String data) {
+		if (this.reader != null) {
+			try {
+				this.reader.programUser(data);
+				return true;
+			} catch (AlienReaderException e) {
+				throw new RFIDReaderException("Erro ao gravar User data nas tags.", e);
+			}
+		}
+		
 		return false;
 	}
 }
