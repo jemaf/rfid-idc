@@ -1,0 +1,1 @@
+Trabalho envolvendo a implementação de um aplicativo para ler etiquetas RFID baseado no Alien para a disciplina Internet das Coisas 02/2011.
